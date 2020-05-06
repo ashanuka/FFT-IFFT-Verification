@@ -1,6 +1,8 @@
+FFT-IFFT-Verification
+
 Verification of 64 Point FFT/IFFT Processor
-EE 382M-11 Verification of Digital Systems
-The University of Texas at Austin
+
+EE382M-11 Verification of Digital Systems, The University of Texas at Austin
 
      UVM
 ===============
