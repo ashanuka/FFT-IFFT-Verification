@@ -13,6 +13,11 @@ package sequences;
 
         constraint c_mode {Mode == 0;}
         constraint c_Data_Start {Data_Start == 1;}
+         
+        // In Stream Constraint
+        // -0.100097656250000    <   data   <   0.100097656250000
+		constraint c_In_Stream_imag { (In_Stream[15 :0] >= 16'hFE66) || (In_Stream[15: 0] <= 16'h019A);} 
+        constraint c_In_Stream_real { (In_Stream[31:16] >= 16'hFE66) || (In_Stream[31:16] <= 16'h019A);} 
 
         
         function new(string name = "");
@@ -52,12 +57,12 @@ package sequences;
         task body;
             fft_transaction_in tx;
             tx=fft_transaction_in::type_id::create("tx");
-            init_data();
+            //init_data();
             start_item(tx);
             assert(tx.randomize());
             tx.rst = 0;
-            tx.In_Stream = rom[idx];
-            idx++;
+            //tx.In_Stream = rom[idx];
+            //idx++;
             finish_item(tx);
         endtask: body
     endclass: simple_seq
@@ -96,7 +101,7 @@ package sequences;
                 seqr.start(p_sequencer);
             end
 
-            repeat(200)
+            repeat(350)
             begin
                 simple_seq seq;
                 seq = simple_seq::type_id::create("seq");
