@@ -3,7 +3,7 @@
 
 clear -all
 #Reading the files
-analyze -v2k master_control.v
+analyze -v2k ../src/master_control.v
 analyze -sv v_master_control.sv
 
 #Elaborating the design
